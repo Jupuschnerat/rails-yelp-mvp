@@ -1,7 +1,9 @@
 class Review < ApplicationRecord
   belongs_to :restaurant
 
-  validates :content, :presence => { :message => "cannot be blank" }
-  validates :rating, :numericality => { :message => " should be a number" }
+
+  validates :rating, presence: true, :numericality => { :only_integer => true }, inclusion: { in: 0..5 }
+  validates :content, presence: true
+
 
 end
